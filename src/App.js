@@ -1,44 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-/*
- * CardGroup
- * This component takes Card components as children and renders them.
- * Example usage:
- *
- *      <CardGroup>
- *          <Card description="Trial" icon="fa-thumbs-o-up" price="Free!" />
- *      </CardGroup>
- *
- * The above would render a card group with a single child in it.
- *
- */
-const CardGroup = (props) => (
-    <div className="cardGroup">
-        {props.children}
-    </div>
-);
+class Text extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: props.color,
+      value: props.value,
+    };
+  }
+  render() {
+    return (
+     <span style={{color: this.props.color}}>{this.props.value}</span>
+    )
+  }
+}
 
-const Card = (props) => (
-    <div className="card cardGroup__card">
-            <div className="card__description cardGroup__cardDescription">
-                <div className={`icon fa ${props.icon} card__descriptionIcon`} />
-                <div className="card__descriptionText">
-                    {props.description}
-                    <br/> {props.hint}
-                </div>
-            </div>
-            <div className="card__price">{props.price}</div>
-        </div>
-);
 
-const App = () => (
-    <CardGroup>
-       
-        <Card description="Trial" price="Free!" icon="fa-thumbs-o-up" hint=""></Card>
-        <Card description="Basic Tier" price="$10.00" icon="fa-trophy" hint="(most popular)"></Card>
-        <Card description="Advanced Tier" price="$6,000" icon="fa-bolt" hint="(only for enterprise-level professionals)"></Card>
-        
-    </CardGroup>
-);
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+        <Text>Hi, I'm <Text color="red" value="Sam"/></Text>
+      </div>
+    );
+  }
+}
 
 export default App;
